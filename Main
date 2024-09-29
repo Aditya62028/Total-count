@@ -1,0 +1,29 @@
+import java.io.*;
+import java.util.*;
+class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine());
+        while (t-- > 0) {
+            int k = Integer.parseInt(br.readLine());
+            String line = br.readLine();
+            String[] tokens = line.split(" ");
+            ArrayList<Integer> array = new ArrayList<>();
+            for (String token : tokens) {
+                array.add(Integer.parseInt(token));
+            }
+            int[] arr = new int[array.size()];
+            int idx = 0;
+            for (int i : array) arr[idx++] = i;
+            int res = totalCount(k, arr);
+            System.out.println(res);
+        }
+    }
+    static int totalCount(int k, int[] arr) {
+        int cnt = 0;
+        for (int val : arr) {
+            cnt += (int) Math.ceil((val / (double) k));
+        }
+        return cnt;
+    }
+}
